@@ -1,0 +1,76 @@
+package edu.towson.cis.cosc442.project3.vendingmachine;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * The unit test Class for VendingMachineItem.
+ */
+public class VendingMachineItemTest {
+	/** Declaring necessary test objects */
+	VendingMachineItem VendItem1;
+	VendingMachineItem VendItem2; 
+	VendingMachineItem VendItem3;
+
+	/**
+	 * Initializes the necessary test objects for the test cases to use.
+	 */
+	@Before
+	public void setUp() throws Exception {
+		VendItem1 = new VendingMachineItem("Chips", .50);
+		VendItem2 = new VendingMachineItem("Candy", 0);
+	}
+	/**
+	 * Test the Exception Constructor method 
+	 */
+	@Test
+	public void testVendingMachinceException() {
+		@SuppressWarnings("unused")
+		VendingMachineException excption = new VendingMachineException();
+	}
+	/**
+	 * Test the Constructor method 
+	 */
+	@Test
+	public void testVendingMachineItem() {
+		VendingMachineItem VendItemTester1 = new VendingMachineItem("Chips", .50);
+		assertEquals( VendItem1.getName(), VendItemTester1.getName());
+		assertEquals( VendItem1.getPrice(), VendItemTester1.getPrice(), .01);
+	}
+	/**
+	 * Test the Constructor method Exceptions 
+	 */
+	@Test(expected = Exception.class)
+	public void testVendingMachineItemExceptions(){
+		VendItem3 = new VendingMachineItem("Soda", -1.00);
+	}
+	/**
+	 * Test the GetName method  
+	 */
+	@Test	
+	public void testGetName() {
+		assertEquals("Chips", VendItem1.getName());
+		assertEquals("Candy", VendItem2.getName());;
+	}
+	/**
+	 * Test the GetPrice method 
+	 */
+	@Test
+	public void testGetPrice() {
+		assertEquals(.50, VendItem1.getPrice(), 0.01);
+		assertEquals(0, VendItem2.getPrice(), 0.01);
+	}
+	/**
+	 * Cleans up test objects after a test case is executed.
+	 */
+	@After
+	public void tearDown() throws Exception {
+		VendItem1 = null;
+		VendItem2 = null;
+		VendItem3 = null;
+
+	}
+}

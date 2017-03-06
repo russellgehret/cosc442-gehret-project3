@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>VendingMachineTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cis.cosc442.project3.vendingmachine (Mar 5, 2017 7:56:24 PM)</a> &gt; <a href="../../index.html" class="el_group">VendingMachine</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.project3.vendingmachine</a> &gt; <span class="el_source">VendingMachineTest.java</span></div><h1>VendingMachineTest.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package edu.towson.cis.cosc442.project3.vendingmachine;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * The unit test Class for VendingMachine.
+ */
+<span class="fc" id="L15">public class VendingMachineTest {</span>
+	/** Declaring necessary test objects */
+	VendingMachineItem VendItem1;
+	VendingMachineItem VendItem2; 
+<span class="fc" id="L19">	String code1 = &quot;A&quot;;</span>
+<span class="fc" id="L20">	String code2 = &quot;1&quot;;</span>
+<span class="fc" id="L21">	String code3 = &quot;B&quot;;</span>
+<span class="fc" id="L22">	String code4 = &quot;C&quot;;</span>
+<span class="fc" id="L23">	String code5 = &quot;D&quot;;</span>
+<span class="fc" id="L24">	Double amount1 = 1.75;</span>
+<span class="fc" id="L25">	Double amount2 = -1.25;</span>
+	VendingMachine vend;
+	/**
+	 * Initializes the necessary test objects for the test cases to use.
+	 */
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L32">		VendItem1 = new VendingMachineItem(&quot;Chips&quot;, .50);</span>
+<span class="fc" id="L33">		VendItem2 = new VendingMachineItem(&quot;Candy&quot;, 0);</span>
+<span class="fc" id="L34">		vend = new VendingMachine();</span>
+<span class="fc" id="L35">	}</span>
+	/**
+	 * Test the AddItem method and its exception  
+	 */
+	@Test
+	public void testAddItem() {
+<span class="fc" id="L41">		vend.addItem(VendItem1, code5);</span>
+<span class="fc" id="L42">	}</span>
+	@Test (expected = Exception.class)
+	public void testAddItemException() {
+<span class="fc" id="L45">		vend.addItem(VendItem1, code1);</span>
+<span class="nc" id="L46">		vend.addItem(VendItem2, code1);</span>
+<span class="nc" id="L47">	}</span>
+	@Test (expected = Exception.class)
+	public void testAddItemException2() {
+<span class="nc" id="L50">		vend.addItem(VendItem1, code2);</span>
+<span class="nc" id="L51">	}</span>
+	/**
+	 * Test the RemoveItem method  and its exception
+	 */
+	@Test
+	public void testRemoveItem() {
+<span class="fc" id="L57">		vend.addItem(VendItem1, code3);</span>
+<span class="fc" id="L58">		vend.removeItem(code3);</span>
+<span class="fc" id="L59">	}</span>
+	@Test (expected = Exception.class)
+	public void testRemoveItemException() {
+<span class="fc" id="L62">		vend.addItem(VendItem1, code4);</span>
+<span class="fc" id="L63">		vend.removeItem(code4);</span>
+<span class="nc" id="L64">		vend.removeItem(code4);</span>
+<span class="nc" id="L65">	}</span>
+	@Test (expected = Exception.class)
+	public void testRemoveItemException2() {
+<span class="fc" id="L68">		vend.addItem(VendItem1, code1);</span>
+<span class="nc" id="L69">		vend.removeItem(code2);</span>
+<span class="nc" id="L70">	}</span>
+	/**
+	 * Test the InsertMoney method  and its exception
+	 */
+	@Test
+	public void testInsertMoney() {
+<span class="fc" id="L76">		vend.insertMoney(amount1);</span>
+<span class="fc" id="L77">	}</span>
+	@Test (expected = Exception.class)
+	public void testInsertMoneyException() {
+<span class="nc" id="L80">		vend.insertMoney(amount2);</span>
+<span class="nc" id="L81">	}</span>
+	/**
+	 * Test the GetBalance method  
+	 */
+	@Test
+	public void testGetBalance() {
+<span class="fc" id="L87">		assertEquals(0, vend.getBalance(), 0.001);</span>
+<span class="fc" id="L88">		vend.insertMoney(amount1);</span>
+<span class="fc" id="L89">		assertEquals(amount1, vend.getBalance(), 0.001);</span>
+<span class="fc" id="L90">	}</span>
+	@Test (expected = Exception.class)
+	public void testGetBalanceException() {
+<span class="nc" id="L93">		vend.insertMoney(amount2);</span>
+<span class="nc" id="L94">	}</span>
+	/**
+	 * Test the MakePurchase method  
+	 */
+	@Test
+	public void testMakePurchase() {
+<span class="fc" id="L100">		vend.insertMoney(amount1);</span>
+<span class="fc" id="L101">		vend.addItem(VendItem1, code1);</span>
+<span class="fc" id="L102">		assertTrue(vend.makePurchase(code1));				</span>
+<span class="fc" id="L103">	}</span>
+	@Test
+	public void testMakePurchaseNoMoney() {
+<span class="fc" id="L106">		vend.addItem(VendItem1, code1);</span>
+<span class="fc" id="L107">		assertFalse(vend.makePurchase(code1));</span>
+<span class="fc" id="L108">		assertFalse(vend.makePurchase(&quot;B&quot;));</span>
+<span class="fc" id="L109">	}</span>
+	@Test
+	public void testMakePurchaseWrongSlot() {
+<span class="fc" id="L112">		assertFalse(vend.makePurchase(&quot;B&quot;));</span>
+<span class="fc" id="L113">	}</span>
+	/**
+	 * Test the ReturnCHange method  
+	 */
+	@Test
+	public void testReturnChange() {
+<span class="fc" id="L119">		vend.insertMoney(amount1);</span>
+<span class="fc" id="L120">		assertEquals(amount1, vend.returnChange(), 0.001);</span>
+<span class="fc" id="L121">	}</span>
+	@Test
+	public void testReturnChangeAfterPurchase() {
+<span class="fc" id="L124">		vend.insertMoney(amount1);</span>
+<span class="fc" id="L125">		vend.addItem(VendItem1, code1);</span>
+<span class="fc" id="L126">		vend.makePurchase(code1);</span>
+<span class="fc" id="L127">		assertEquals((amount1 - .50), vend.returnChange(), 0.001);</span>
+<span class="fc" id="L128">	}</span>
+	@Test(expected = Exception.class)
+	public void testReturnChangeNegativeBalance() {
+<span class="fc" id="L131">		vend.balance = -1.0;</span>
+<span class="nc" id="L132">		assertEquals((-1.0), vend.returnChange(), 0.001);</span>
+<span class="nc" id="L133">	}</span>
+	/**
+	 * Cleans up test objects after a test case is executed.
+	 */
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L139">		VendItem1 = null;</span>
+<span class="fc" id="L140">		VendItem2 = null; </span>
+<span class="fc" id="L141">		code1 = null;</span>
+<span class="fc" id="L142">		code2 = null;</span>
+<span class="fc" id="L143">		amount1 = null;</span>
+<span class="fc" id="L144">	    amount2 = null;</span>
+<span class="fc" id="L145">		vend = null;</span>
+<span class="fc" id="L146">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>edu.towson.cis.cosc442.project3.vendingmachine (Mar 5, 2017 7:56:24 PM)</div></body></html>

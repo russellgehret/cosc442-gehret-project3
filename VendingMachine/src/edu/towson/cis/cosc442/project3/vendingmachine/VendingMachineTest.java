@@ -18,6 +18,9 @@ public class VendingMachineTest {
 	VendingMachineItem VendItem2; 
 	String code1 = "A";
 	String code2 = "1";
+	String code3 = "B";
+	String code4 = "C";
+	String code5 = "D";
 	Double amount1 = 1.75;
 	Double amount2 = -1.25;
 	VendingMachine vend;
@@ -35,7 +38,7 @@ public class VendingMachineTest {
 	 */
 	@Test
 	public void testAddItem() {
-		vend.addItem(VendItem1, code1);
+		vend.addItem(VendItem1, code5);
 	}
 	@Test (expected = Exception.class)
 	public void testAddItemException() {
@@ -51,14 +54,14 @@ public class VendingMachineTest {
 	 */
 	@Test
 	public void testRemoveItem() {
-		vend.addItem(VendItem1, code1);
-		vend.removeItem(code1);
+		vend.addItem(VendItem1, code3);
+		vend.removeItem(code3);
 	}
 	@Test (expected = Exception.class)
 	public void testRemoveItemException() {
-		vend.addItem(VendItem1, code1);
-		vend.removeItem(code1);
-		vend.removeItem(code1);
+		vend.addItem(VendItem1, code4);
+		vend.removeItem(code4);
+		vend.removeItem(code4);
 	}
 	@Test (expected = Exception.class)
 	public void testRemoveItemException2() {

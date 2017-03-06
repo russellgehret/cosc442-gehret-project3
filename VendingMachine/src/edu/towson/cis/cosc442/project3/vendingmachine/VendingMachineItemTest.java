@@ -24,6 +24,14 @@ public class VendingMachineItemTest {
 		VendItem2 = new VendingMachineItem("Candy", 0);
 	}
 	/**
+	 * Test the Exception Constructor method 
+	 */
+	@Test
+	public void testVendingMachinceException() {
+		@SuppressWarnings("unused")
+		VendingMachineException excption = new VendingMachineException();
+	}
+	/**
 	 * Test the Constructor method 
 	 */
 	@Test
@@ -45,7 +53,7 @@ public class VendingMachineItemTest {
 	@Test	
 	public void testGetName() {
 		assertEquals("Chips", VendItem1.getName());
-		assertEquals("Candy", VendItem2.getName());;
+		assertEquals("Candy", VendItem2.getName());
 	}
 	/**
 	 * Test the GetPrice method 
