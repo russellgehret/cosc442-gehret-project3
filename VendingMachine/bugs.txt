@@ -1,0 +1,5 @@
+Bugs:
+
+The returnChange method allows return of a negative balance 
+
+Added an "INVALID_BALANCE_EXCEPTION"
