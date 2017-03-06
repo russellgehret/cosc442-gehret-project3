@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SessionExportWizard">
+		<item value="HTML" key="SessionExportPage1.format"/>
+		<list key="SessionExportPage1.destinations">
+			<item value="C:\Users\Russell\Documents\GitHub\cosc442-gehret-project3\VendingMachine2\src\edu\towson\cis\cosc442\project3\vendingmachine\Test Report"/>
+			<item value="C:\Users\Russell\Documents\GitHub\cosc442-gehret-project3\VendingMachine\src\edu\towson\cis\cosc442\project3\vendingmachine2\Test Report"/>
+			<item value="C:\Users\Russell\Documents\GitHub\cosc442-gehret-project3\VendingMachine\src\edu\towson\cis\cosc442\project3\vendingmachine\Test Report"/>
+		</list>
+	</section>
+</section>
